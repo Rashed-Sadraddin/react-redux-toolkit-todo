@@ -21,20 +21,11 @@ function App() {
     setInputText(e.target.value)
   }
 
-  // useEffect(() => {
-  //   fetch('https://todo-demo-e0f6b-default-rtdb.firebaseio.com/todos.json')
-  //   .then(async(res)=>{
-  //     const data = await res.json();
-  //     dispatch(todoActions.replaceTodos(data))
-  //   })
-  //   .catch(err=>{
-  //       console.log(err)}
-  //   )
-  // },[])
+
 
   useEffect(()=>{
     if(!isFirst){
-      fetch('https://todo-demo-e0f6b-default-rtdb.firebaseio.com/todos.json', {
+      fetch('https://mini-7627e-default-rtdb.firebaseio.com/todos.json', {
       method:'PUT',
       // mode: 'cors',     
       // headers: new Headers({       'Content-Type': 'application/json'    }),
@@ -43,6 +34,18 @@ function App() {
     }
     isFirst=false
   },[todos])
+
+
+    useEffect(() => {
+    fetch('https://mini-7627e-default-rtdb.firebaseio.com/todos.json')
+    .then(async(res)=>{
+      const data = await res.json();
+      dispatch(todoActions.replaceTodos(data))
+    })
+    .catch(err=>{
+        console.log(err)}
+    )
+  },[])
 
   return (
     <div className="App">
