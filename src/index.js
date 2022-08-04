@@ -4,16 +4,24 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {Provider} from 'react-redux';
+import store from './store/index';
+import Signin from './All_routes/Signin';
+import All_routes from './All_routes/All_routes';
+import { BrowserRouter } from "react-router-dom";
 
-import store from './store/index'
 
 ReactDOM.render(
   <React.StrictMode>
+    <BrowserRouter>
+    
     <Provider store={store}>
-      <App />
-
+      <All_routes/>
     </Provider>
-  </React.StrictMode>,
+    
+  </BrowserRouter>
+  </React.StrictMode>
+  
+  ,
   document.getElementById('root')
 );
 
